@@ -332,8 +332,12 @@ Loader {
                   }
 
                   // Date below
+                  SystemClock {
+                    id: sysClock
+                    precision: SystemClock.Minutes
+                  }
                   NText {
-                    text: Qt.locale().toString(Time.date, "dddd, MMMM d")
+                    text: {return sysClock.date.toLocaleDateString(Qt.locale(), Locale.LongFormat)}
                     pointSize: Style.fontSizeXL
                     font.weight: Font.Medium
                     color: Color.mOnSurfaceVariant
